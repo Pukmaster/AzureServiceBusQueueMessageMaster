@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29326.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pukmaster.AzureServiceBusQueueReader.Forms", "Pukmaster.AzureServiceBusQueueReader.Forms\Pukmaster.AzureServiceBusQueueReader.Forms.csproj", "{EFE2C5C2-4053-49C9-835E-DF3D18C0757B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFE2C5C2-4053-49C9-835E-DF3D18C0757B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFE2C5C2-4053-49C9-835E-DF3D18C0757B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFE2C5C2-4053-49C9-835E-DF3D18C0757B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFE2C5C2-4053-49C9-835E-DF3D18C0757B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6FE75B4B-D9B1-4EF8-98EC-E6F9ED0B56BF}
+	EndGlobalSection
+EndGlobal
