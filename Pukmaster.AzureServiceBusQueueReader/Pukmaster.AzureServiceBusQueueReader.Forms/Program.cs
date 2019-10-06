@@ -1,13 +1,15 @@
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Pukmaster.AzureServiceBusQueueReader.Core;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Pukmaster.AzureServiceBusQueueReader.Forms
 {
     static class Program
     {
+        private static IServiceProvider _serviceProvider;
+
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
@@ -17,7 +19,25 @@ namespace Pukmaster.AzureServiceBusQueueReader.Forms
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+
+            ConfigureServices();
+
+            var serviceBusQueueMonitor = _serviceProvider.GetService<IServiceBusQueueMonitor>();
+
+            Application.Run(new MainForm(serviceBusQueueMonitor));
+        }
+
+        private static void ConfigureServices()
+        {
+            var serviceCollection = new ServiceCollection();
+
+            serviceCollection.AddLogging();
+
+            serviceCollection.AddScoped<ILogger, CustomLogger>();
+            serviceCollection.AddScoped<IServiceBusMessageHandler, ServiceBusMessageHandler>();
+            serviceCollection.AddScoped<IServiceBusQueueMonitor, ServiceBusQueueMonitor>();
+
+            _serviceProvider = serviceCollection.BuildServiceProvider();
         }
     }
 }
