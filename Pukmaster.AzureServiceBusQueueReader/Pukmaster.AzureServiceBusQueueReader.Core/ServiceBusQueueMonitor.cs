@@ -10,27 +10,29 @@ namespace Pukmaster.AzureServiceBusQueueReader.Core
     {
         private readonly ILogger _log;
         private IQueueClient _queueClient;
-        private readonly IServiceBusMessageHandler _serviceBusMessageHandler;
+        private IServiceBusMessageHandler _serviceBusMessageHandler;
 
         public string QueueName { get; private set; }
 
-        public ServiceBusQueueMonitor(ILogger log, IServiceBusMessageHandler serviceBusMessageHandler)
+        public ServiceBusQueueMonitor(ILogger log)
         {
             _log = log;
-            _serviceBusMessageHandler = serviceBusMessageHandler;
         }
 
-        public void RegisterServiceBusQueueMonitor(string queueName, string serviceBusConnectionString)
+        public void RegisterServiceBusQueueMonitor(string queueName, string serviceBusConnectionString, IServiceBusMessageHandler serviceBusMessageHandler)
         {
             QueueName = queueName;
             _queueClient = new QueueClient(serviceBusConnectionString, queueName);
+            _serviceBusMessageHandler = serviceBusMessageHandler;
 
             RegisterOnMessageHandlerAndReceiveMessages();
         }
 
-        public async Task DeregisterServiceBusQueueMonitorAsync()
+        public async Task DeregisterServiceBusQueueMonitorAsync(string message)
         {
             await _queueClient.CloseAsync();
+
+            _serviceBusMessageHandler.HandleDisconnection(message);
         }
 
         private void RegisterOnMessageHandlerAndReceiveMessages()
@@ -72,11 +74,9 @@ namespace Pukmaster.AzureServiceBusQueueReader.Core
             // https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Microsoft.Azure.ServiceBus/src/Management/ManagementClient.cs
             if (exceptionReceivedEventArgs.Exception is MessagingEntityNotFoundException)
             {
-                await DeregisterServiceBusQueueMonitorAsync();
+                await DeregisterServiceBusQueueMonitorAsync(exceptionReceivedEventArgs.Exception.Message);
                 return;
             }
-
-            var context = exceptionReceivedEventArgs.ExceptionReceivedContext;
         }
     }
 }

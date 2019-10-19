@@ -36,6 +36,11 @@
             this.payloadLabel = new System.Windows.Forms.Label();
             this.connectedLabel = new System.Windows.Forms.Label();
             this.connectButton = new System.Windows.Forms.Button();
+            this.propertiesLabel = new System.Windows.Forms.Label();
+            this.consoleTextBox = new System.Windows.Forms.TextBox();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             // 
             // listView1
             // 
@@ -49,33 +54,34 @@
             this.listView1.Location = new System.Drawing.Point(8, 43);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1113, 309);
+            this.listView1.Size = new System.Drawing.Size(1113, 241);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView1_ItemSelectionChanged);
             // 
             // messageIdColumnHeader
             // 
             this.messageIdColumnHeader.Name = "messageIdColumnHeader";
             this.messageIdColumnHeader.Text = "Message ID";
-            this.messageIdColumnHeader.Width = 200;
+            this.messageIdColumnHeader.Width = 350;
             // 
             // queuedSinceColumnHeader
             // 
             this.queuedSinceColumnHeader.Name = "queuedSinceColumnHeader";
             this.queuedSinceColumnHeader.Text = "Queued since";
-            this.queuedSinceColumnHeader.Width = 150;
+            this.queuedSinceColumnHeader.Width = 210;
             // 
             // payloadTextBox
             // 
             this.payloadTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.payloadTextBox.Location = new System.Drawing.Point(8, 393);
+            this.payloadTextBox.Location = new System.Drawing.Point(8, 336);
             this.payloadTextBox.Multiline = true;
             this.payloadTextBox.Name = "payloadTextBox";
             this.payloadTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.payloadTextBox.Size = new System.Drawing.Size(1113, 452);
+            this.payloadTextBox.Size = new System.Drawing.Size(661, 214);
             this.payloadTextBox.TabIndex = 1;
             // 
             // messagesLabel
@@ -90,7 +96,7 @@
             // payloadLabel
             // 
             this.payloadLabel.AutoSize = true;
-            this.payloadLabel.Location = new System.Drawing.Point(8, 365);
+            this.payloadLabel.Location = new System.Drawing.Point(8, 308);
             this.payloadLabel.Name = "payloadLabel";
             this.payloadLabel.Size = new System.Drawing.Size(78, 25);
             this.payloadLabel.TabIndex = 3;
@@ -100,16 +106,16 @@
             // 
             this.connectedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.connectedLabel.AutoSize = true;
-            this.connectedLabel.Location = new System.Drawing.Point(8, 848);
+            this.connectedLabel.Location = new System.Drawing.Point(8, 562);
             this.connectedLabel.Name = "connectedLabel";
-            this.connectedLabel.Size = new System.Drawing.Size(191, 25);
+            this.connectedLabel.Size = new System.Drawing.Size(119, 25);
             this.connectedLabel.TabIndex = 4;
-            this.connectedLabel.Text = "Connected to \'{}\' @ \'{}\'.";
+            this.connectedLabel.Text = "Disconnected";
             // 
             // connectButton
             // 
             this.connectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.connectButton.Location = new System.Drawing.Point(8, 876);
+            this.connectButton.Location = new System.Drawing.Point(8, 590);
             this.connectButton.Name = "connectButton";
             this.connectButton.Size = new System.Drawing.Size(133, 40);
             this.connectButton.TabIndex = 5;
@@ -117,9 +123,58 @@
             this.connectButton.UseVisualStyleBackColor = true;
             this.connectButton.Click += new System.EventHandler(this.connectButton_Click);
             // 
+            // propertiesLabel
+            // 
+            this.propertiesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.propertiesLabel.AutoSize = true;
+            this.propertiesLabel.Location = new System.Drawing.Point(744, 308);
+            this.propertiesLabel.Name = "propertiesLabel";
+            this.propertiesLabel.Size = new System.Drawing.Size(96, 25);
+            this.propertiesLabel.TabIndex = 7;
+            this.propertiesLabel.Text = "Properties:";
+            // 
+            // consoleTextBox
+            // 
+            this.consoleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.consoleTextBox.Location = new System.Drawing.Point(8, 636);
+            this.consoleTextBox.Multiline = true;
+            this.consoleTextBox.Name = "consoleTextBox";
+            this.consoleTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.consoleTextBox.Size = new System.Drawing.Size(1113, 149);
+            this.consoleTextBox.TabIndex = 8;
+            // 
+            // listView2
+            // 
+            this.listView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.listView2.FullRowSelect = true;
+            this.listView2.HideSelection = false;
+            this.listView2.Location = new System.Drawing.Point(675, 336);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(446, 214);
+            this.listView2.TabIndex = 9;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Name";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Value";
+            // 
             // MainForm
             // 
-            this.ClientSize = new System.Drawing.Size(1129, 927);
+            this.ClientSize = new System.Drawing.Size(1129, 799);
+            this.Controls.Add(this.listView2);
+            this.Controls.Add(this.consoleTextBox);
+            this.Controls.Add(this.propertiesLabel);
             this.Controls.Add(this.connectButton);
             this.Controls.Add(this.connectedLabel);
             this.Controls.Add(this.payloadLabel);
@@ -143,6 +198,11 @@
         private System.Windows.Forms.Label payloadLabel;
         private System.Windows.Forms.Label connectedLabel;
         private System.Windows.Forms.Button connectButton;
+        private System.Windows.Forms.Label propertiesLabel;
+        private System.Windows.Forms.TextBox consoleTextBox;
+        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }
 

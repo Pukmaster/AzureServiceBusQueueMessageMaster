@@ -6,5 +6,7 @@ namespace Pukmaster.AzureServiceBusQueueReader.Core
     public interface IServiceBusMessageHandler
     {
         Task<bool> HandleMessageAsync(Message message);
+
+        void HandleDisconnection(string message);
     }
 }

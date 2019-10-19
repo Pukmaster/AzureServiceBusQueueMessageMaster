@@ -4,8 +4,8 @@ namespace Pukmaster.AzureServiceBusQueueReader.Core
 {
     public interface IServiceBusQueueMonitor
     {
-        void RegisterServiceBusQueueMonitor(string queueName, string serviceBusConnectionString);
+        void RegisterServiceBusQueueMonitor(string queueName, string serviceBusConnectionString, IServiceBusMessageHandler serviceBusMessageHandler);
 
-        Task DeregisterServiceBusQueueMonitorAsync();
+        Task DeregisterServiceBusQueueMonitorAsync(string message);
     }
 }
