@@ -33,18 +33,24 @@ namespace Pukmaster.AzureServiceBusQueueReader.Forms
         {
             var connectionSettings = new ConnectionSettings()
             {
-                QueueName = "",
-                ConnectionString = ""
+
             };
 
             var settingsForm = new AzureServiceBusSettingsForm(connectionSettings);
             settingsForm.ShowDialog();
 
-            _serviceBusQueueMonitor.RegisterServiceBusQueueMonitor(connectionSettings.QueueName, connectionSettings.ConnectionString, _serviceBusMessageHandler);
+            if (!string.IsNullOrWhiteSpace(connectionSettings.QueueName) && !string.IsNullOrWhiteSpace(connectionSettings.ConnectionString))
+            {
+                AddMessageToConsole("Connecting...");
 
-            var connectionStringBuilder = new MAS.ServiceBusConnectionStringBuilder(connectionSettings.ConnectionString);
+                _serviceBusQueueMonitor.RegisterServiceBusQueueMonitor(connectionSettings.QueueName, connectionSettings.ConnectionString, _serviceBusMessageHandler);
 
-            connectedLabel.Text = $"Connected to: {connectionSettings.QueueName} @ {connectionStringBuilder.Endpoint}";
+                var connectionStringBuilder = new MAS.ServiceBusConnectionStringBuilder(connectionSettings.ConnectionString);
+
+                connectedLabel.Text = $"Connected to: {connectionSettings.QueueName} @ {connectionStringBuilder.Endpoint}";
+
+                AddMessageToConsole("Connected.");
+            }
         }
 
         private void AddMessageToListView(MAS.Message message)
@@ -54,6 +60,8 @@ namespace Pukmaster.AzureServiceBusQueueReader.Forms
                 Invoke((MethodInvoker)delegate { AddMessageToListView(message); });
                 return;
             }
+
+            AddMessageToConsole("Received message.");
 
             listView1.Items.Add(CreateListViewItem(message));
         }
@@ -73,7 +81,16 @@ namespace Pukmaster.AzureServiceBusQueueReader.Forms
 
         private void AddMessageToConsole(string message)
         {
-            consoleTextBox.Text = $"{message}{Environment.NewLine}{consoleTextBox.Text}";
+            var formattedMessage = $"{DateTime.Now} {message}";
+
+            if (string.IsNullOrWhiteSpace(consoleTextBox.Text))
+            {
+                consoleTextBox.Text = formattedMessage;
+            }
+            else
+            {
+                consoleTextBox.Text = $"{consoleTextBox.Text}{Environment.NewLine}{formattedMessage}";
+            }
         }
 
         private ListViewItem CreateListViewItem(MAS.Message message)
