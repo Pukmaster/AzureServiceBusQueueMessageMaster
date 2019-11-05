@@ -89,7 +89,7 @@ namespace Pukmaster.AzureServiceBusQueueReader.Forms
             }
             else
             {
-                consoleTextBox.Text = $"{consoleTextBox.Text}{Environment.NewLine}{formattedMessage}";
+                consoleTextBox.Text = $"{formattedMessage}{Environment.NewLine}{consoleTextBox.Text}";
             }
         }
 
