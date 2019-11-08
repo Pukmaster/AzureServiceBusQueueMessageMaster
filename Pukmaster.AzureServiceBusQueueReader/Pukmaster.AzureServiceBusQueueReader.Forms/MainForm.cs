@@ -1,4 +1,5 @@
-﻿using Pukmaster.AzureServiceBusQueueReader.Core;
+﻿using Newtonsoft.Json.Linq;
+using Pukmaster.AzureServiceBusQueueReader.Core;
 using System;
 using System.Text;
 using System.Windows.Forms;
@@ -109,7 +110,7 @@ namespace Pukmaster.AzureServiceBusQueueReader.Forms
 
             if (selectedMessage != null)
             {
-                payloadTextBox.Text = Encoding.UTF8.GetString(selectedMessage.Body);
+                payloadTextBox.Text = FormatPayload(Encoding.UTF8.GetString(selectedMessage.Body));
             }
 
             listView2.Items.Clear();
@@ -125,6 +126,23 @@ namespace Pukmaster.AzureServiceBusQueueReader.Forms
             AddItemToPropertiesListView(nameof(systemProperties.LockedUntilUtc), systemProperties.LockedUntilUtc.ToString());
             AddItemToPropertiesListView(nameof(systemProperties.LockToken), systemProperties.LockToken);
             AddItemToPropertiesListView(nameof(systemProperties.SequenceNumber), systemProperties.SequenceNumber.ToString());
+
+            foreach (var userProperty in selectedMessage.UserProperties)
+            {
+                AddItemToPropertiesListView(userProperty.Key, userProperty.Value.ToString());
+            }
+        }
+
+        private string FormatPayload(string payload)
+        {
+            var parsedJson = JToken.Parse(payload);
+
+            if (parsedJson != null)
+            {
+                return parsedJson.ToString();
+            }
+
+            return payload;
         }
 
         private void AddItemToPropertiesListView(string name, string value)
