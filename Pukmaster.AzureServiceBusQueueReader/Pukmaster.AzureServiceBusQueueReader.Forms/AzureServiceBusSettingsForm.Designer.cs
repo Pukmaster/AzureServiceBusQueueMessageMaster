@@ -35,6 +35,8 @@
             this.connectionStringLabel = new System.Windows.Forms.Label();
             this.saveSettingsButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.deadLetterQueueCheckBox = new System.Windows.Forms.CheckBox();
+            this.deadLetterQueueLabel = new System.Windows.Forms.Label();
             // 
             // queueNameTextBox
             // 
@@ -79,7 +81,7 @@
             // 
             // saveSettingsButton
             // 
-            this.saveSettingsButton.Location = new System.Drawing.Point(459, 135);
+            this.saveSettingsButton.Location = new System.Drawing.Point(459, 174);
             this.saveSettingsButton.Name = "saveSettingsButton";
             this.saveSettingsButton.Size = new System.Drawing.Size(133, 40);
             this.saveSettingsButton.TabIndex = 5;
@@ -89,7 +91,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(320, 135);
+            this.cancelButton.Location = new System.Drawing.Point(320, 174);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(133, 40);
             this.cancelButton.TabIndex = 6;
@@ -97,12 +99,32 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // deadLetterQueueCheckBox
+            // 
+            this.deadLetterQueueCheckBox.AutoSize = true;
+            this.deadLetterQueueCheckBox.Location = new System.Drawing.Point(175, 135);
+            this.deadLetterQueueCheckBox.Name = "deadLetterQueueCheckBox";
+            this.deadLetterQueueCheckBox.Size = new System.Drawing.Size(22, 21);
+            this.deadLetterQueueCheckBox.TabIndex = 7;
+            this.deadLetterQueueCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // deadLetterQueueLabel
+            // 
+            this.deadLetterQueueLabel.AutoSize = true;
+            this.deadLetterQueueLabel.Location = new System.Drawing.Point(13, 135);
+            this.deadLetterQueueLabel.Name = "deadLetterQueueLabel";
+            this.deadLetterQueueLabel.Size = new System.Drawing.Size(98, 25);
+            this.deadLetterQueueLabel.TabIndex = 8;
+            this.deadLetterQueueLabel.Text = "Deadletter:";
+            // 
             // AzureServiceBusSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 193);
+            this.ClientSize = new System.Drawing.Size(618, 237);
             this.ControlBox = false;
+            this.Controls.Add(this.deadLetterQueueLabel);
+            this.Controls.Add(this.deadLetterQueueCheckBox);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveSettingsButton);
             this.Controls.Add(this.connectionStringLabel);
@@ -126,5 +148,7 @@
         private System.Windows.Forms.Label connectionStringLabel;
         private System.Windows.Forms.Button saveSettingsButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.CheckBox deadLetterQueueCheckBox;
+        private System.Windows.Forms.Label deadLetterQueueLabel;
     }
 }

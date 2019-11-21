@@ -15,12 +15,14 @@ namespace Pukmaster.AzureServiceBusQueueReader.Forms
 
             queueNameTextBox.Text = connectionSettings.QueueName;
             connectionStringTextBox.Text = connectionSettings.ConnectionString;
+            deadLetterQueueCheckBox.Checked = connectionSettings.IsDeadLetterQueue;
         }
 
         private void saveSettingsButton_Click(object sender, EventArgs e)
         {
             _connectionSettings.QueueName = queueNameTextBox.Text;
             _connectionSettings.ConnectionString = connectionStringTextBox.Text;
+            _connectionSettings.IsDeadLetterQueue = deadLetterQueueCheckBox.Checked;
 
             Close();
         }

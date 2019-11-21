@@ -2,6 +2,7 @@
 using Pukmaster.AzureServiceBusQueueReader.Core;
 using System;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using MAS = Microsoft.Azure.ServiceBus;
 
@@ -34,7 +35,6 @@ namespace Pukmaster.AzureServiceBusQueueReader.Forms
         {
             var connectionSettings = new ConnectionSettings()
             {
-
             };
 
             var settingsForm = new AzureServiceBusSettingsForm(connectionSettings);
@@ -44,27 +44,29 @@ namespace Pukmaster.AzureServiceBusQueueReader.Forms
             {
                 AddMessageToConsole("Connecting...");
 
-                _serviceBusQueueMonitor.RegisterServiceBusQueueMonitor(connectionSettings.QueueName, connectionSettings.ConnectionString, _serviceBusMessageHandler);
+                _serviceBusQueueMonitor.RegisterServiceBusQueueMonitor(connectionSettings.CompleteQueueName, connectionSettings.ConnectionString, _serviceBusMessageHandler);
 
                 var connectionStringBuilder = new MAS.ServiceBusConnectionStringBuilder(connectionSettings.ConnectionString);
 
-                connectedLabel.Text = $"Connected to: {connectionSettings.QueueName} @ {connectionStringBuilder.Endpoint}";
+                connectedLabel.Text = $"Connected to: {connectionSettings.CompleteQueueName} @ {connectionStringBuilder.Endpoint}";
 
                 AddMessageToConsole("Connected.");
             }
         }
 
-        private void AddMessageToListView(MAS.Message message)
+        private Task AddMessageToListView(MAS.Message message)
         {
             if (InvokeRequired)
             {
                 Invoke((MethodInvoker)delegate { AddMessageToListView(message); });
-                return;
+                return Task.CompletedTask;
             }
 
             AddMessageToConsole("Received message.");
 
             listView1.Items.Add(CreateListViewItem(message));
+
+            return Task.CompletedTask;
         }
 
         private void HandleDisconnection(string message)
