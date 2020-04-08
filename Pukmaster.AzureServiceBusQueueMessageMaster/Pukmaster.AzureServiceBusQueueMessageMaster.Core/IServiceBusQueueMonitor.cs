@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Pukmaster.AzureServiceBusQueueReader.Core
+namespace Pukmaster.AzureServiceBusQueueMessageMaster.Core
 {
     public interface IServiceBusQueueMonitor
     {

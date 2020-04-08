@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json.Linq;
-using Pukmaster.AzureServiceBusQueueReader.Core;
+using Pukmaster.AzureServiceBusQueueMessageMaster.Core;
 using System;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MAS = Microsoft.Azure.ServiceBus;
 
-namespace Pukmaster.AzureServiceBusQueueReader.Forms
+namespace Pukmaster.AzureServiceBusQueueMessageMaster.Forms
 {
     public partial class MainForm : Form
     {

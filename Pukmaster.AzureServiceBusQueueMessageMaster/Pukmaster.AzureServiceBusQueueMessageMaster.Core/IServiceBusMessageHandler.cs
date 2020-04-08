@@ -1,7 +1,7 @@
 ﻿using Microsoft.Azure.ServiceBus;
 using System.Threading.Tasks;
 
-namespace Pukmaster.AzureServiceBusQueueReader.Core
+namespace Pukmaster.AzureServiceBusQueueMessageMaster.Core
 {
     public interface IServiceBusMessageHandler
     {

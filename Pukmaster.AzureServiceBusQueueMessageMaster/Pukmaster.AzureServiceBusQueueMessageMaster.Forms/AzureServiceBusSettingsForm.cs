@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Pukmaster.AzureServiceBusQueueReader.Forms
+namespace Pukmaster.AzureServiceBusQueueMessageMaster.Forms
 {
     public partial class AzureServiceBusSettingsForm : Form
     {
