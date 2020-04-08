@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pukmaster.AzureServiceBusQueueReader.Forms", "Pukmaster.AzureServiceBusQueueReader.Forms\Pukmaster.AzureServiceBusQueueReader.Forms.csproj", "{EFE2C5C2-4053-49C9-835E-DF3D18C0757B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pukmaster.AzureServiceBusQueueMessageMaster.Forms", "Pukmaster.AzureServiceBusQueueMessageMaster.Forms\Pukmaster.AzureServiceBusQueueMessageMaster.Forms.csproj", "{EFE2C5C2-4053-49C9-835E-DF3D18C0757B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pukmaster.AzureServiceBusQueueReader.Core", "Pukmaster.AzureServiceBusQueueReader.Core\Pukmaster.AzureServiceBusQueueReader.Core.csproj", "{C53535D6-65C7-4B0E-B260-216E5E2BDC0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pukmaster.AzureServiceBusQueueMessageMaster.Core", "Pukmaster.AzureServiceBusQueueMessageMaster.Core\Pukmaster.AzureServiceBusQueueMessageMaster.Core.csproj", "{C53535D6-65C7-4B0E-B260-216E5E2BDC0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,7 +4,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Pukmaster.AzureServiceBusQueueReader.Core
+namespace Pukmaster.AzureServiceBusQueueMessageMaster.Core
 {
     public class ServiceBusQueueMonitor : IServiceBusQueueMonitor
     {

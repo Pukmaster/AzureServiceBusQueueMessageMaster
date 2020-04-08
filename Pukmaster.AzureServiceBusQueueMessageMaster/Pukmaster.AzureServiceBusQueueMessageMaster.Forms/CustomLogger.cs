@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
 
-namespace Pukmaster.AzureServiceBusQueueReader.Forms
+namespace Pukmaster.AzureServiceBusQueueMessageMaster.Forms
 {
     public class CustomLogger : ILogger
     {

@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Pukmaster.AzureServiceBusQueueReader.Core\Pukmaster.AzureServiceBusQueueReader.Core.csproj" />
+    <ProjectReference Include="..\Pukmaster.AzureServiceBusQueueMessageMaster.Core\Pukmaster.AzureServiceBusQueueMessageMaster.Core.csproj" />
   </ItemGroup>
 
 </Project>

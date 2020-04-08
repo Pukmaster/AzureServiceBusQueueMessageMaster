@@ -1,10 +1,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Pukmaster.AzureServiceBusQueueReader.Core;
+using Pukmaster.AzureServiceBusQueueMessageMaster.Core;
 using System;
 using System.Windows.Forms;
 
-namespace Pukmaster.AzureServiceBusQueueReader.Forms
+namespace Pukmaster.AzureServiceBusQueueMessageMaster.Forms
 {
     static class Program
     {

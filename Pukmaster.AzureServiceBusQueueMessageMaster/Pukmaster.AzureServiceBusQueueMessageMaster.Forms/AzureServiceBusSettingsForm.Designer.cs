@@ -1,4 +1,4 @@
-﻿namespace Pukmaster.AzureServiceBusQueueReader.Forms
+﻿namespace Pukmaster.AzureServiceBusQueueMessageMaster.Forms
 {
     partial class AzureServiceBusSettingsForm
     {

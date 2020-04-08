@@ -1,4 +1,4 @@
-﻿namespace Pukmaster.AzureServiceBusQueueReader.Forms
+﻿namespace Pukmaster.AzureServiceBusQueueMessageMaster.Forms
 {
     partial class MainForm
     {
@@ -186,7 +186,7 @@
             this.Controls.Add(this.payloadTextBox);
             this.Controls.Add(this.listView1);
             this.Name = "MainForm";
-            this.Text = "Azure Service Bus Queue Reader";
+            this.Text = "Azure Service Bus Queue Message Master";
             this.Load += new System.EventHandler(this.MainForm_Load);
 
         }

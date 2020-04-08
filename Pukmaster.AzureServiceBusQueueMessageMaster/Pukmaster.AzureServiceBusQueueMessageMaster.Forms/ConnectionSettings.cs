@@ -1,4 +1,4 @@
-﻿namespace Pukmaster.AzureServiceBusQueueReader.Forms
+﻿namespace Pukmaster.AzureServiceBusQueueMessageMaster.Forms
 {
     public class ConnectionSettings
     {

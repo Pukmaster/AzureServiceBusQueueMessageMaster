@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.Azure.ServiceBus;
-using Pukmaster.AzureServiceBusQueueReader.Core;
+using Pukmaster.AzureServiceBusQueueMessageMaster.Core;
 
-namespace Pukmaster.AzureServiceBusQueueReader.Forms
+namespace Pukmaster.AzureServiceBusQueueMessageMaster.Forms
 {
     public class ServiceBusMessageHandler : IServiceBusMessageHandler
     {
