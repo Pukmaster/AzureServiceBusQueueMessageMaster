@@ -35,6 +35,7 @@ namespace Pukmaster.AzureServiceBusQueueReader.Forms
         {
             var connectionSettings = new ConnectionSettings()
             {
+
             };
 
             var settingsForm = new AzureServiceBusSettingsForm(connectionSettings);
